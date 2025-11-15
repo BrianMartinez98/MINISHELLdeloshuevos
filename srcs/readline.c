@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 01:24:42 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 17:23:51 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 20:46:30 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_readline(t_shell *shell)
 {
 	ft_free_line(shell);
-	shell->syntax_error =  0;
+	shell->syntax_error = 0;
 	shell->line = readline(shell->prompt);
 }
 

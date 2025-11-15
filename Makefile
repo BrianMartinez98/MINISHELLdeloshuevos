@@ -6,7 +6,7 @@
 #    By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/04 18:59:16 by jarregui          #+#    #+#              #
-#    Updated: 2025/11/15 18:15:57 by jarregui         ###   ########.fr        #
+#    Updated: 2025/11/15 20:45:38 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRCS 	= builtins/echo.c \
 		srcs/tokens_print.c \
 		srcs/tokens_quotes.c \
 		srcs/tokens_remove.c \
+		srcs/tokens_syntax.c \
 		srcs/tokens_span.c \
 		srcs/tokens_utils.c \
 		srcs/tokens.c \

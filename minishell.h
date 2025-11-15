@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:13:22 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 18:14:52 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 20:45:22 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,10 @@ size_t	remove_quotes(char **cmd, t_span span);
 
 //srcs/tokens_remove.c
 void	remove_initial_empty_cmds(t_shell *shell);
+
+//srcs/tokens_syntax.c
+int		syntax_pipe(t_shell *shell, int i);
+int		redir_syntax(t_shell *shell);
 
 //srcs/tokens_span.c
 int		ft_next_span(char *s, size_t *i, t_span *sp);

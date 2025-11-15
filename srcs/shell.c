@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 15:00:40 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/13 15:10:52 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 20:46:45 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	extra_init(t_shell *shell)
 	shell->i = 0;
 	shell->n = 0;
 	shell->flag = 0;
-	shell->syntax_error =  0;
+	shell->syntax_error = 0;
 }
 
 void	ft_init_shell(t_shell *shell, char **env)
