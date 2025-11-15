@@ -67,16 +67,20 @@ int	remove_quotes_and_check_expand(char **delimiter)
 	int		expand;
 	char	*new_delim;
 
-	expand = 1;
+	expand = 0;
 	if (!delimiter || !*delimiter)
 		return (expand);
 	new_delim = *delimiter;
-	if ((new_delim[0] == '\''
-			&& new_delim[ft_strlen(new_delim) - 1] == '\'')
-		|| (new_delim[0] == '"'
-			&& new_delim[ft_strlen(new_delim) - 1] == '"'))
+	if (new_delim[0] == '"'
+			&& new_delim[ft_strlen(new_delim) - 1] == '"')
 	{
-		expand = 0;
+		new_delim = ft_substr(new_delim, 1, ft_strlen(new_delim) - 2);
+		free(*delimiter);
+		*delimiter = new_delim;
+	}
+	else if (new_delim[0] == '\''
+			&& new_delim[ft_strlen(new_delim) - 1] == '\'')
+	{
 		new_delim = ft_substr(new_delim, 1, ft_strlen(new_delim) - 2);
 		free(*delimiter);
 		*delimiter = new_delim;

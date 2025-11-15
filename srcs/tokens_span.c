@@ -58,7 +58,15 @@ static void	read_word(char *s, size_t *i)
 		else if (s[*i] == '\"')
 			skip_double_quotes(s, i);
 		else
+		{
+			// Check if the next character is a redirection operator
+			if (s[*i + 1] && (s[*i + 1] == '<' || s[*i + 1] == '>'))
+			{
+				(*i)++;
+				break;
+			}
 			(*i)++;
+		}
 	}
 }
 

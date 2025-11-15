@@ -57,6 +57,36 @@ static int	check_heredoc_signal(int status, t_shell *shell, int *pipefd)
 	return (0);
 }
 
+char    *find_delimeter(char *line)
+{
+    int i;
+    int start;
+    int end;
+
+    if (!line)
+        return (NULL);
+    i = 0;
+    while (line[i])
+    {
+        if (line[i] == '<' && line[i + 1] == '<')
+            break;
+        i++;
+    }
+    if (!line[i])
+        return (NULL);
+    i += 2;
+    while (line[i] == ' ' || line[i] == '\t')
+        i++;
+    if (!line[i])
+        return (NULL);
+    start = i;
+    while (line[i] && line[i] != ' ' && line[i] != '\t')
+        i++;
+    end = i;
+    return (ft_substr(line, start, end - start));
+}
+
+
 int	ft_leftleft(t_shell *shell, char **cmd, int i)
 {
 	int		pipefd[2];
@@ -65,7 +95,9 @@ int	ft_leftleft(t_shell *shell, char **cmd, int i)
 	char	*delimiter;
 	int		expand;
 
-	delimiter = ft_strdup(cmd[i + 1]);
+	delimiter = find_delimeter(shell->line);
+	i = i;
+	cmd = cmd;
 	if (!delimiter)
 		return (-1);
 	expand = remove_quotes_and_check_expand(&delimiter);
