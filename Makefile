@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+         #
+#    By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/04 18:59:16 by jarregui          #+#    #+#              #
-#    Updated: 2025/11/13 13:44:07 by brimarti         ###   ########.fr        #
+#    Updated: 2025/11/15 18:15:57 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ SRCS 	= builtins/echo.c \
 		builtins/cd.c \
 		srcs/errors.c \
 		srcs/execute_builtin.c \
+		srcs/execute_pid.c \
+		srcs/execute_pipes_single.c \
 		srcs/execute_pipes.c \
 		srcs/execute_utils.c \
 		srcs/execute.c \

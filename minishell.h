@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:13:22 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 16:45:32 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 18:14:52 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,12 @@ int		error_custom(t_shell *shell, int err_code,
 			char *err_msg, char *err_key);
 int		ft_error(const char *msg);
 void	handle_error(t_errorlst error, t_shell *shell);
+
+//srcs/execute_pid.c
+void	pid_child(char **tokens, char **cmd, t_shell *shell, t_fd fd);
+
+//srcs/execute_pipes_single.c
+int		execute_single_pipe(t_shell *shell, int *in_fd_ptr, pid_t *pids);
 
 //srcs/execute_pipes.c
 void	ft_execute_pipes(t_shell *shell);

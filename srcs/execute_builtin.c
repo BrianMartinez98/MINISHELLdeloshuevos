@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 18:38:39 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 16:59:03 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 17:25:37 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@ int	ft_execute_builtin(char **tokens, t_shell *shell)
 	else if (ft_strcmp(tokens[0], "README.md") == 0)
 		read_me_built(shell);
 	else
-	{
-		// ft_free_array(&tokens);
 		return (0);
-	}
-	// ft_free_array(&tokens);
 	return (1);
 }
