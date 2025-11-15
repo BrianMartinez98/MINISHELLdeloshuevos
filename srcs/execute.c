@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 19:47:59 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 18:26:32 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 20:41:57 by brimarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ static pid_t	get_pid_has_next(t_shell *shell, char **tokens, t_fd fd)
 	if (is_builtin(tokens))
 		pid = fork_and_exec_builtin(tokens, shell, fd);
 	else
-		pid = fork_and_exec(tokens, shell->cmds[shell->i], shell, fd);
+	{
+		if (is_builtin(tokens))
+			pid = fork_and_exec_builtin(tokens, shell, fd);
+		else
+			pid = fork_and_exec(tokens, shell->cmds[shell->i], shell, fd);
+	}
 	return (pid);
 }
 
@@ -54,7 +59,7 @@ pid_t	execute_command(t_shell *shell, char **tokens, int has_next, t_fd fd)
 		get_pid_has_next(shell, tokens, fd);
 	else
 	{
-		if (is_builtin(tokens) && !has_next && fd.in == -1)
+		if (is_builtin(tokens) && !has_next && !has_redirections(shell->cmds[shell->i]))
 		{
 			shell->builtin = 1;
 			dup2(STDIN_FILENO, shell->stdin_save);

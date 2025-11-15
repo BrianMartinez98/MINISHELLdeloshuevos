@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 19:51:04 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 16:41:48 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 20:39:48 by brimarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,23 @@ static int	is_redirect(char *arg)
 		return (0);
 	if (ft_strcmp(arg, "<") == 0
 		|| ft_strcmp(arg, ">") == 0
-		|| ft_strcmp(arg, ">>") == 0)
+		|| ft_strcmp(arg, ">>") == 0
+		|| ft_strcmp(arg, "<<") == 0)
 		return (1);
+	return (0);
+}
+
+int	has_redirections(char **cmd)
+{
+	int	i;
+
+	i = 0;
+	while (cmd[i])
+	{
+		if (is_redirect(cmd[i]))
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
