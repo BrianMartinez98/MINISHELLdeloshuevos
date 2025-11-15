@@ -71,6 +71,7 @@ static void	pid_child(char **tokens, char **cmd, t_shell *shell, t_fd fd)
 	pathname = ft_execve_prep(&tokens, shell);
 	execve(pathname, tokens, shell->env);
 	perror(tokens[0]);
+	ft_free_array(&tokens);
 	if (errno == EACCES)
 		exit(126);
 	exit(127);

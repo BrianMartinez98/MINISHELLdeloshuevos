@@ -24,3 +24,15 @@ void	ft_free_line(t_shell *shell)
 		free(shell->line);
 	shell->line = NULL;
 }
+
+char **my_completion(const char *text, int start, int end)
+{
+    (void)end;
+
+    if (start == 0 && text[0] == '\0')
+    {
+        rl_attempted_completion_over = 1;
+        return NULL;
+    }
+    return rl_completion_matches(text, rl_filename_completion_function);
+}

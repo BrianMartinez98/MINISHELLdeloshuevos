@@ -37,24 +37,29 @@ void	ft_exit(t_shell *shell, char **cmd)
 	{
 		error_custom(shell, 1, "exit: too many arguments", NULL);
 		shell->last_status = 1;
+		ft_free_array(&cmd);
 		exit(shell->last_status);
 	}
 	else if (cmd[1] && ft_strisnum(cmd[1]) == 0)
 	{
 		shell->last_status = 2;
+		ft_putstr_fd("exit\n", STDERR);
 		ft_putstr_fd("minishell: exit: ", STDERR);
 		ft_putstr_fd(cmd[1], STDERR);
 		ft_putendl_fd(": numeric argument required", STDERR);
+		ft_free_array(&cmd);
 		exit(shell->last_status);
 	}
 	else if (cmd[1])
 	{
 		shell->last_status = ft_atoi(cmd[1]);
+		ft_free_array(&cmd);
 		exit(shell->last_status);
 	}
 	else
 	{
 		shell->last_status = 0;
+		ft_free_array(&cmd);
 		exit(shell->last_status);
 	}
 }

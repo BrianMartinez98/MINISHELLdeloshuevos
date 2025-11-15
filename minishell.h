@@ -50,6 +50,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+char **my_completion(const char *text, int start, int end);
+
 typedef struct s_token //para los tokens que nos pasen
 {
 	char			*str;
@@ -119,6 +121,9 @@ typedef struct s_shell //para los datos que necesitaremos en la minishell
 	int				n;
 	int				flag;
 }	t_shell;
+
+//builtins/read_me_built.c
+void    read_me_built(t_shell *shell);
 
 //builtins/cd.c
 int		change_path(char **tokens, t_shell *shell);

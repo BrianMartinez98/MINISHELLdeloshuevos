@@ -17,7 +17,7 @@ void	ft_sigint_handler(int sig)
 	(void)sig;
 	if (DEBUG)
 		printf("\033[1;33m\n\t   ↳ Pulsada tecla Ctrl+C\n\033[0m");
-	write(1, "^C\n", 3);
+	write(1, "\n", 1);
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();

@@ -18,7 +18,8 @@ int	is_builtin(char **tokens)
 		|| ft_strcmp(tokens[0], "cd") == 0
 		|| ft_strcmp(tokens[0], "export") == 0
 		|| ft_strcmp(tokens[0], "unset") == 0
-		|| ft_strcmp(tokens[0], "history") == 0);
+		|| ft_strcmp(tokens[0], "history") == 0
+		|| ft_strcmp(tokens[0], "README.md") == 0);
 }
 
 int	is_echo(char **tokens)
@@ -46,7 +47,13 @@ int	ft_execute_builtin(char **tokens, t_shell *shell)
 		ft_print_history(shell);
 	else if (ft_strcmp(tokens[0], "env") == 0)
 		ft_print_env(shell);
+	else if (ft_strcmp(tokens[0], "README.md") == 0)
+		read_me_built(shell);
 	else
+	{
+		ft_free_array(&tokens);
 		return (0);
+	}
+	ft_free_array(&tokens);
 	return (1);
 }

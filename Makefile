@@ -34,6 +34,7 @@ LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
 # SOURCES
 SRCS 	= builtins/echo.c \
+		builtins/read_me_built.c \
 		builtins/environment_init.c \
 		builtins/environment.c \
 		builtins/exit.c \

@@ -20,6 +20,7 @@ int	main(int ac, char **av, char **env)
 	(void)av;
 	ft_init_shell(&shell, env);
 	ft_build_prompt(&shell);
+	rl_attempted_completion_function = my_completion;
 	while (shell.exit == 0)
 	{
 		ft_setup_signals_prompt();
