@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 18:41:31 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 21:07:29 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:39:58 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void	ft_wait_children(t_shell *shell, pid_t *pids)
 	while (j < shell->n)
 	{
 		if (waitpid(pids[j], &shell->status, 0) == -1)
-			perror("waitpid");
+		{
+			if (errno != ECHILD)
+				perror("waitpid");
+		}
 		else if (WIFSIGNALED(shell->status))
 		{
 			sig = WTERMSIG(shell->status);
