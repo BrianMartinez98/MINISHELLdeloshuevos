@@ -105,7 +105,6 @@ pid_t	execute_command(t_shell *shell, char **tokens, int has_next, t_fd fd)
 		return (-2);
 	if (has_next)
 	{
-		// Si hay pipes, todos los comandos se ejecutan en hijos
 		if (is_builtin(tokens))
 			pid = fork_and_exec_builtin(tokens, shell, fd);
 		else
@@ -113,12 +112,14 @@ pid_t	execute_command(t_shell *shell, char **tokens, int has_next, t_fd fd)
 	}
 	else
 	{
-		// Si no hay pipes, los builtins se ejecutan en el padre
-		if (is_builtin(tokens))
+		if (is_builtin(tokens) && !has_next && fd.in == -1)
 		{
+			shell->builtin = 1;
+			dup2(STDIN_FILENO, shell->stdin_save);
+			dup2(STDOUT_FILENO, shell->stdout_save);
 			handle_redirections(shell->cmds[shell->i], shell);
 			ft_execute_builtin(tokens, shell);
-			pid = -1;
+			return (-2);
 		}
 		else
 			pid = fork_and_exec(tokens, shell->cmds[shell->i], shell, fd);
