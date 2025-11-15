@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 15:11:34 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/12 15:18:02 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:35:35 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ int	remove_quotes_and_check_expand(char **delimiter)
 		return (expand);
 	new_delim = *delimiter;
 	if (new_delim[0] == '"'
-			&& new_delim[ft_strlen(new_delim) - 1] == '"')
+		&& new_delim[ft_strlen(new_delim) - 1] == '"')
 	{
 		new_delim = ft_substr(new_delim, 1, ft_strlen(new_delim) - 2);
 		free(*delimiter);
 		*delimiter = new_delim;
 	}
 	else if (new_delim[0] == '\''
-			&& new_delim[ft_strlen(new_delim) - 1] == '\'')
+		&& new_delim[ft_strlen(new_delim) - 1] == '\'')
 	{
 		new_delim = ft_substr(new_delim, 1, ft_strlen(new_delim) - 2);
 		free(*delimiter);

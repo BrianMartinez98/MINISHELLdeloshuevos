@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 01:24:42 by jarregui          #+#    #+#             */
-/*   Updated: 2025/08/07 01:29:31 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:43:22 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	ft_free_line(t_shell *shell)
 	shell->line = NULL;
 }
 
-char **my_completion(const char *text, int start, int end)
+char	**my_completion(const char *text, int start, int end)
 {
-    (void)end;
+	(void)end;
 
-    if (start == 0 && text[0] == '\0')
-    {
-        rl_attempted_completion_over = 1;
-        return NULL;
-    }
-    return rl_completion_matches(text, rl_filename_completion_function);
+	if (start == 0 && text[0] == '\0')
+	{
+		rl_attempted_completion_over = 1;
+		return NULL;
+	}
+	return rl_completion_matches(text, rl_filename_completion_function);
 }

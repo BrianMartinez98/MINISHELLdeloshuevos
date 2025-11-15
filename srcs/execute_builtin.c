@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 18:38:39 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/13 23:09:56 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:59:03 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	ft_execute_builtin(char **tokens, t_shell *shell)
 		read_me_built(shell);
 	else
 	{
-		ft_free_array(&tokens);
+		// ft_free_array(&tokens);
 		return (0);
 	}
-	ft_free_array(&tokens);
+	// ft_free_array(&tokens);
 	return (1);
 }

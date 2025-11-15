@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:13:22 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/13 21:58:07 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:45:32 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@
 # include <sys/stat.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
-char **my_completion(const char *text, int start, int end);
 
 typedef struct s_token //para los tokens que nos pasen
 {
@@ -123,7 +121,7 @@ typedef struct s_shell //para los datos que necesitaremos en la minishell
 }	t_shell;
 
 //builtins/read_me_built.c
-void    read_me_built(t_shell *shell);
+void	read_me_built(t_shell *shell);
 
 //builtins/cd.c
 int		change_path(char **tokens, t_shell *shell);
@@ -186,6 +184,7 @@ pid_t	execute_command(t_shell *shell, char **tokens, int has_next, t_fd fd);
 //srcs/readline.c
 void	ft_readline(t_shell *shell);
 void	ft_free_line(t_shell *shell);
+char	**my_completion(const char *text, int start, int end);
 
 //srcs/redirect_expand.c
 char	*expand_heredoc_line(const char *line, t_shell *sh);
@@ -212,6 +211,7 @@ int		ft_leftleft(t_shell *shell, char **cmd, int i);
 int		handle_redirections(char **cmd, t_shell *shell);
 int		check_heredoc(char **cmd, t_shell *shell);
 void	restore_std(t_shell *shell);
+char	*find_delimeter(char *line);
 
 //srcs/shell_exit.c
 void	ft_free_array(char ***array);

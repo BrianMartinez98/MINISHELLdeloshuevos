@@ -1,3 +1,0 @@
-hola
-[?2004h[0;36m[1m/workspaces/MINISHELLdeloshuevos > [0m[?2004l
-[1;32mExiting minishell...[0m

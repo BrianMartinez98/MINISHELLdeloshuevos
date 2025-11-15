@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:28:43 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/13 15:10:02 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:41:34 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,36 +56,6 @@ static int	check_heredoc_signal(int status, t_shell *shell, int *pipefd)
 	}
 	return (0);
 }
-
-char    *find_delimeter(char *line)
-{
-    int i;
-    int start;
-    int end;
-
-    if (!line)
-        return (NULL);
-    i = 0;
-    while (line[i])
-    {
-        if (line[i] == '<' && line[i + 1] == '<')
-            break;
-        i++;
-    }
-    if (!line[i])
-        return (NULL);
-    i += 2;
-    while (line[i] == ' ' || line[i] == '\t')
-        i++;
-    if (!line[i])
-        return (NULL);
-    start = i;
-    while (line[i] && line[i] != ' ' && line[i] != '\t')
-        i++;
-    end = i;
-    return (ft_substr(line, start, end - start));
-}
-
 
 int	ft_leftleft(t_shell *shell, char **cmd, int i)
 {

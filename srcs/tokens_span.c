@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens_span.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:28:41 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/07 17:29:32 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:35:04 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,10 @@ static void	read_word(char *s, size_t *i)
 			skip_double_quotes(s, i);
 		else
 		{
-			// Check if the next character is a redirection operator
 			if (s[*i + 1] && (s[*i + 1] == '<' || s[*i + 1] == '>'))
 			{
 				(*i)++;
-				break;
+				break ;
 			}
 			(*i)++;
 		}
