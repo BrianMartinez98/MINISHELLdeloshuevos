@@ -118,6 +118,7 @@ typedef struct s_shell //para los datos que necesitaremos en la minishell
 	int				i;
 	int				n;
 	int				flag;
+	int				syntax_error;
 }	t_shell;
 
 //builtins/read_me_built.c

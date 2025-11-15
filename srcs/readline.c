@@ -15,6 +15,7 @@
 void	ft_readline(t_shell *shell)
 {
 	ft_free_line(shell);
+	shell->syntax_error =  0;
 	shell->line = readline(shell->prompt);
 }
 

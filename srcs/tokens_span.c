@@ -35,18 +35,6 @@ static void	skip_double_quotes(char *s, size_t *i)
 		(*i)++;
 }
 
-static int	handle_redir(char *s, size_t *i, t_span *sp)
-{
-	char	op;
-
-	op = s[*i];
-	(*i)++;
-	if (s[*i] == op)
-		(*i)++;
-	sp->end = *i;
-	return (1);
-}
-
 static void	read_word(char *s, size_t *i)
 {
 	while (s[*i] && !ft_isspace((unsigned char)s[*i]) && s[*i] != '|')
@@ -67,6 +55,18 @@ static void	read_word(char *s, size_t *i)
 			(*i)++;
 		}
 	}
+}
+
+static int	handle_redir(char *s, size_t *i, t_span *sp)
+{
+	char	op;
+
+	op = s[*i];
+	(*i)++;
+	while (s[*i] == op)
+		(*i)++;
+	sp->end = *i;
+	return (1);
 }
 
 int	ft_next_span(char *s, size_t *i, t_span *sp)

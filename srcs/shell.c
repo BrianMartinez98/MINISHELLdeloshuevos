@@ -47,6 +47,7 @@ static void	extra_init(t_shell *shell)
 	shell->i = 0;
 	shell->n = 0;
 	shell->flag = 0;
+	shell->syntax_error =  0;
 }
 
 void	ft_init_shell(t_shell *shell, char **env)

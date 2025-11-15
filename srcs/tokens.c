@@ -70,8 +70,46 @@ static void	fill_cmds(t_shell *shell)
 	shell->cmds[shell->n + 1] = NULL;
 }
 
+static int redir_syntax(t_shell *shell)
+{
+    char *s = shell->line;
+
+    while (*s)
+    {
+        if (*s == '<' || *s == '>')
+        {
+            int len = 0;
+            char first = *s;
+            while (*s == '<' || *s == '>')
+            {
+                if (*s != first)
+                    break;
+                len++;
+                s++;
+            }
+            if (len != 1 && len != 2)
+            {
+                error_custom(shell, 1, "Minishell: syntax error near unexpected token `>'", NULL);
+				shell->syntax_error =  1;
+                return (-1);
+            }
+            if (*s == '<' || *s == '>')
+            {
+                error_custom(shell, 1, "Minishell: syntax error near unexpected token `>'", NULL);
+				shell->syntax_error =  1;
+                return (-1);
+            }
+            continue;
+        }
+        s++;
+    }
+	return (0);
+}
+
 void	split_line(t_shell *shell)
 {
+	if (redir_syntax(shell) == -1)
+		return ;
 	init_cmds(shell);
 	fill_cmds(shell);
 	if (DEBUG)

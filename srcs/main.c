@@ -33,7 +33,7 @@ int	main(int ac, char **av, char **env)
 			continue ;
 		ft_add_history(&shell);
 		split_line(&shell);
-		if (!shell.cmds || !shell.cmds[0])
+		if (!shell.cmds || !shell.cmds[0] || shell.syntax_error != 0)
 			continue ;
 		ft_execute_pipes(&shell);
 	}
