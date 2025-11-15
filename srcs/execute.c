@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 19:47:59 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 20:41:57 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:24:22 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ pid_t	execute_command(t_shell *shell, char **tokens, int has_next, t_fd fd)
 		get_pid_has_next(shell, tokens, fd);
 	else
 	{
-		if (is_builtin(tokens) && !has_next && !has_redirections(shell->cmds[shell->i]))
+		if (is_builtin(tokens) && !has_next
+			&& !has_redirections(shell->cmds[shell->i]))
 		{
 			shell->builtin = 1;
 			dup2(STDIN_FILENO, shell->stdin_save);

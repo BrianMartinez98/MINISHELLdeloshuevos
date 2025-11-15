@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 19:51:04 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 20:39:48 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:25:52 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,33 +99,4 @@ void	restore_std(t_shell *shell)
 {
 	dup2(shell->stdin_save, STDIN_FILENO);
 	dup2(shell->stdout_save, STDOUT_FILENO);
-}
-
-char	*find_delimeter(char *line)
-{
-	int	i;
-	int	start;
-	int	end;
-
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == '<' && line[i + 1] == '<')
-			break ;
-		i++;
-	}
-	if (!line[i])
-		return (NULL);
-	i += 2;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	if (!line[i])
-		return (NULL);
-	start = i;
-	while (line[i] && line[i] != ' ' && line[i] != '\t')
-		i++;
-	end = i;
-	return (ft_substr(line, start, end - start));
 }

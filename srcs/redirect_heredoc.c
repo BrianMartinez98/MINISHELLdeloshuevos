@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:27:07 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/12 15:15:50 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:26:02 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,33 @@ void	heredoc_child(t_shell *shell, int *pipefd, char *delimiter, int expand)
 	}
 	close(pipefd[1]);
 	exit(0);
+}
+
+char	*find_delimeter(char *line)
+{
+	int	i;
+	int	start;
+	int	end;
+
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '<' && line[i + 1] == '<')
+			break ;
+		i++;
+	}
+	if (!line[i])
+		return (NULL);
+	i += 2;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (!line[i])
+		return (NULL);
+	start = i;
+	while (line[i] && line[i] != ' ' && line[i] != '\t')
+		i++;
+	end = i;
+	return (ft_substr(line, start, end - start));
 }

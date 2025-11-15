@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:13:22 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 20:45:22 by jarregui         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:23:20 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,6 @@ void	ft_unset(char **tokens, t_shell *shell);
 
 //srcs/execute_builtin.c
 int		is_builtin(char **tokens);
-int		is_echo(char **tokens);
 int		ft_execute_builtin(char **tokens, t_shell *shell);
 
 //srcs/errors.c
@@ -219,6 +218,7 @@ int		handle_redirections(char **cmd, t_shell *shell);
 int		check_heredoc(char **cmd, t_shell *shell);
 void	restore_std(t_shell *shell);
 char	*find_delimeter(char *line);
+int		has_redirections(char **cmd);
 
 //srcs/shell_exit.c
 void	ft_free_array(char ***array);

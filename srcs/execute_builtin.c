@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 18:38:39 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/15 20:37:08 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:24:43 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	is_builtin(char **tokens)
 		|| ft_strcmp(tokens[0], "pwd") == 0
 		|| ft_strcmp(tokens[0], "env") == 0);
 }
-
 
 int	ft_execute_builtin(char **tokens, t_shell *shell)
 {
