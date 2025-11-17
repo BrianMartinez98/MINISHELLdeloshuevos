@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens_expand.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brimarti <brimarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 22:30:31 by jarregui          #+#    #+#             */
-/*   Updated: 2025/11/13 23:30:24 by brimarti         ###   ########.fr       */
+/*   Updated: 2025/11/17 11:43:11 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ char	*get_env_value(t_shell *shell, const char *key)
 	char	*value;
 
 	if (key[0] == '?')
-		value = ft_itoa(shell->last_status);
-	else
-		value = ft_getenv(shell, key);
+		return (ft_itoa(shell->last_status));
+	value = ft_getenv(shell, key);
 	if (!value)
-		value = ft_strdup("");
-	return (value);
+		return (ft_strdup(""));
+	return (ft_strdup(value));
 }
 
 static size_t	expand(t_shell *shell, char **cmd, const char *key, t_span span)
@@ -41,8 +40,7 @@ static size_t	expand(t_shell *shell, char **cmd, const char *key, t_span span)
 	tmp = ft_strjoin(prefix, value);
 	span.end = ft_strlen(tmp);
 	new_cmd = ft_strjoin(tmp, suffix);
-	if (ft_strcmp(key, "?") == 0 || ft_strcmp(value, "") == 0)
-		free(value);
+	free(value);
 	free(*cmd);
 	free(prefix);
 	free(suffix);
